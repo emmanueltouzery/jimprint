@@ -6,6 +6,10 @@
   (println files)
   )
 
+(defn handleEvent [handler]
+  (reify javafx.event.EventHandler
+    (handle [this e] (handler e))))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
@@ -23,10 +27,8 @@
             (def droptarget (.lookup froot "#droptarget"))
             (println droptarget)
             (.setOnDragOver droptarget
-                            (reify javafx.event.EventHandler
-                              (handle [this e] (when (.hasFiles (.getDragboard e))
-                                                 (.acceptTransferModes e javafx.scene.input.TransferMode/COPY_OR_MOVE)))))
+                              (handleEvent #(when (.hasFiles (.getDragboard %))
+                                                 (.acceptTransferModes % javafx.scene.input.TransferMode/COPY_OR_MOVE))))
             (.setOnDragDropped droptarget
-                             (reify javafx.event.EventHandler
-                               (handle [this e] (files-picked (.getFiles (.getDragboard e))))))))
+                               (handleEvent #(files-picked (.getFiles (.getDragboard %)))))))
   (println "Hello, World!"))
