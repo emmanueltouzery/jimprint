@@ -10,6 +10,14 @@
   (reify javafx.event.EventHandler
     (handle [this e] (handler e))))
 
+(defn init-drop-target [froot]
+    (def droptarget (.lookup froot "#droptarget"))
+    (.setOnDragOver droptarget
+      (handleEvent #(when (.hasFiles (.getDragboard %))
+                      (.acceptTransferModes % javafx.scene.input.TransferMode/COPY_OR_MOVE))))
+    (.setOnDragDropped droptarget
+                       (handleEvent #(files-picked (.getFiles (.getDragboard %))))))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
@@ -23,12 +31,5 @@
  ; (.setScene stage (javafx.scene.Scene. froot 800 600))
   (println froot)
   (run-now (.show stage))
-  (run-now (
-            (def droptarget (.lookup froot "#droptarget"))
-            (println droptarget)
-            (.setOnDragOver droptarget
-                              (handleEvent #(when (.hasFiles (.getDragboard %))
-                                                 (.acceptTransferModes % javafx.scene.input.TransferMode/COPY_OR_MOVE))))
-            (.setOnDragDropped droptarget
-                               (handleEvent #(files-picked (.getFiles (.getDragboard %)))))))
-  (println "Hello, World!"))
+  (run-now ((init-drop-target froot)
+            (println "Hello, World!"))))
