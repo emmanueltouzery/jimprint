@@ -15,7 +15,7 @@
                <children>
                   <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                      <Button mnemonicParsing="false" text="Pick files and folders" />
+                      <Button id="pickfilesfolders" mnemonicParsing="false" text="Pick files and folders" />
                         <Button mnemonicParsing="false" text="Settings" />
                         <Button mnemonicParsing="false" text="About" />
                     </items>
