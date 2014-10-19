@@ -14,4 +14,3 @@
   (.setScene (javafx.scene.Scene. froot)))))
   (run-now (.show stage))
   (callback froot))
-
