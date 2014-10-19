@@ -1,6 +1,7 @@
 (ns jimprint.core
   (:require [clojurefx.core :refer :all])
   (:require [jimprint.javafx-helpers :refer :all])
+  (:require [jimprint.settings :refer :all])
   (:gen-class))
 
 (defn files-picked [files]
@@ -15,15 +16,11 @@
     (.setOnDragDropped droptarget
                        (handle-event #(files-picked (.getFiles (.getDragboard %))))))
 
-(defn init-settings [froot]
-  (println froot))
-
 (defn init-toolbar [froot]
     (def pick-files (.lookup froot "#pickfilesfolders"))
     (println pick-files)
     (.setOnMouseClicked pick-files
-                        (handle-event (fn [_] (show-window
-                                                "file:///home/emmanuel/home/jimprint/settings.fxml" init-settings))))
+                        (handle-event (fn [_] (show-settings))))
   )
 
 (defn init-main-window [froot]
