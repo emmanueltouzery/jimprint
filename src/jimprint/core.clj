@@ -32,6 +32,6 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (show-window "file:///home/emmanuel/home/jimprint/jimprint.fxml" init-main-window))
+  (show-window "jimprint.fxml" init-main-window))
  
  ; (.setScene stage (javafx.scene.Scene. froot 800 600))

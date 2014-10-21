@@ -11,12 +11,10 @@
     (handle [this e] (handler))))
 
 (defn show-window [fxml-path callback]
-  (def froot (run-now (javafx.fxml.FXMLLoader/load (java.net.URL. fxml-path))))
- ; (clojure.java.io/resource "<FILENAME>.fxml")))))))
-  (def stage (run-now
-  (doto
-  (.build (javafx.stage.StageBuilder/create))
-  (.setScene (javafx.scene.Scene. froot)))))
+  (def froot (run-now (javafx.fxml.FXMLLoader/load (clojure.java.io/resource fxml-path))))
+  (def stage (run-now 
+               (doto (.build (javafx.stage.StageBuilder/create))
+                 (.setScene (javafx.scene.Scene. froot)))))
   (run-now (.show stage))
   (callback froot))
 

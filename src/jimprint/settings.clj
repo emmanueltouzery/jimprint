@@ -12,5 +12,4 @@
     (.setOnMouseClicked (handle-action #(println @cur-style)))))
 
 (defn show-settings []
-  (show-window
-    "file:///home/emmanuel/home/jimprint/settings.fxml" init-settings))
+  (show-window "settings.fxml" init-settings))
