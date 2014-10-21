@@ -14,3 +14,8 @@
   (.setScene (javafx.scene.Scene. froot)))))
   (run-now (.show stage))
   (callback froot))
+
+(defn bind-property [model keylist property]
+  (.addListener property (reify javafx.beans.value.ChangeListener
+                           (changed [this obs old new]
+                             (swap! model (fn [m] (assoc-in m keylist new)))))))

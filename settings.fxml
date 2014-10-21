@@ -59,7 +59,10 @@
                                     <Slider GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                     <Slider GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <Slider GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Slider GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Slider id="sizeslider" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets></Slider>
                                     <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                        <children>
@@ -82,7 +85,7 @@
                   <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
                      <children>
                         <Button mnemonicParsing="false" text="Defaults" />
-                        <Button mnemonicParsing="false" text="OK" />
+                        <Button id="okbutton" mnemonicParsing="false" text="OK" />
                         <Button mnemonicParsing="false" text="Cancel" />
                      </children>
                      <padding>
