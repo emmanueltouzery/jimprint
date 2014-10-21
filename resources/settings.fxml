@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections ?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <children>
@@ -27,7 +29,14 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label text="Preview aspect ratio:" />
-                                    <ComboBox prefWidth="150.0" />
+                                    <ComboBox id="aspectratiocombo" prefWidth="150.0">
+					    <items>
+                                                <FXCollections fx:factory="observableArrayList">
+						    <String fx:value="4:3 - compact cameras" />
+						    <String fx:value="3:2 - DSLRs and smartphones" />
+						</FXCollections>
+			                    </items>
+			            </ComboBox>
                                  </children>
                               </HBox>
                            </children>
@@ -66,7 +75,18 @@
                                     <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                        <children>
-                                          <ComboBox prefWidth="150.0" />
+                                          <ComboBox prefWidth="150.0">
+       <items>
+				    	    	    <FXCollections fx:factory="observableArrayList">
+				    	    		    <String fx:value="Top left" />
+				    	    		    <String fx:value="Top center" />
+				    	    		    <String fx:value="Top right" />
+				    	    		    <String fx:value="Bottom left" />
+				    	    		    <String fx:value="Bottom center" />
+				    	    		    <String fx:value="Bottom right" />
+				    	    	    </FXCollections>
+				    	        </items>
+			            	</ComboBox>
                                           <Button mnemonicParsing="false" text="Button" />
                                        </children>
                                     </HBox>
