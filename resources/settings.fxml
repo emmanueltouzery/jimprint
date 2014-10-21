@@ -28,8 +28,8 @@
                               </Canvas>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Preview aspect ratio:" />
-                                    <ComboBox id="aspectratiocombo" prefWidth="150.0" value="4:3 - compact cameras">
+                                    <Label text="Preview aspect ratio:" HBox.hgrow="ALWAYS" />
+                                    <ComboBox id="aspectratiocombo" value="4:3 - compact cameras" HBox.hgrow="ALWAYS">
 					    <items>
                                                 <FXCollections fx:factory="observableArrayList">
 						    <String fx:value="4:3 - compact cameras" />
