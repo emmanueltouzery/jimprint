@@ -8,8 +8,8 @@
 (defn init-settings [froot]
   (def cur-style (atom (->TextStyle 1 (Color/rgb 255 0 0) (Color/rgb 0 255 0) 0.5)))
   (bind-property cur-style [:stroke-height-ratio] (.valueProperty (.lookup froot "#sizeslider")))
-  (def ok-btn (.lookup froot "#okbutton"))
-  (.setOnMouseClicked ok-btn (handle-event (fn [_] (println @cur-style)))))
+  (doto (.lookup froot "#okbutton")
+    (.setOnMouseClicked (handle-event (fn [_] (println @cur-style))))))
 
 (defn show-settings []
   (show-window
