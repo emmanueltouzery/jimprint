@@ -20,7 +20,7 @@
     (def pick-files (.lookup froot "#pickfilesfolders"))
     (println pick-files)
     (.setOnMouseClicked pick-files
-                        (handle-event (fn [_] (show-settings))))
+                        (handle-action #(show-settings)))
   )
 
 (defn init-main-window [froot]
