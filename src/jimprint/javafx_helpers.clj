@@ -20,7 +20,11 @@
   (run-now (.show stage))
   (callback froot))
 
+; set the value of the property to the value of the atom,
+; then update the atom from the property.
+; TODO need to remove the listener at some point?
 (defn bind-property [model keylist property]
+  (.setValue property (get-in @model keylist))
   (.addListener property (reify javafx.beans.value.ChangeListener
                            (changed [this obs old new]
                              (swap! model (fn [m] (assoc-in m keylist new)))))))
