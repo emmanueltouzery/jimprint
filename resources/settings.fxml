@@ -29,7 +29,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label text="Preview aspect ratio:" />
-                                    <ComboBox id="aspectratiocombo" prefWidth="150.0">
+                                    <ComboBox id="aspectratiocombo" prefWidth="150.0" value="4:3 - compact cameras">
 					    <items>
                                                 <FXCollections fx:factory="observableArrayList">
 						    <String fx:value="4:3 - compact cameras" />
