@@ -4,14 +4,21 @@
   (:require [jimprint.settings :refer :all])
   (import javafx.scene.image.Image)
   (import javafx.embed.swing.SwingFXUtils)
+  (import java.awt.image.BufferedImage)
   (import java.io.File)
   (import javax.imageio.ImageIO)
   (:gen-class))
 
 (defn convert-file [file]
   (def img (Image. (.toString (.toURI file))))
+  ; sadly need this... http://stackoverflow.com/a/19605733/516188
+  (def bufimg (SwingFXUtils/fromFXImage img nil))
+  (def img-rgb (BufferedImage. (.getWidth img) (.getHeight img) BufferedImage/OPAQUE))
+  (def graphics (.createGraphics img-rgb))
+  (.drawImage graphics bufimg 0 0 nil)
   (def outputFile (File. "/home/emmanuel/out.jpg"))
-  (ImageIO/write (SwingFXUtils/fromFXImage img nil) "jpeg" outputFile)
+  (ImageIO/write img-rgb "jpeg" outputFile)
+  (.dispose graphics)
   (println "OK"))
 
 (defn files-picked [files]
