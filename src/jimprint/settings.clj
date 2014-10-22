@@ -9,8 +9,12 @@
 (defn change-font-size [gc size]
     (.setFont gc (Font/font (.getFamily (.getFont gc)) size)))
 
+(defn clear-gc [gc canvas]
+  (.clearRect gc 0 0 (.getWidth canvas) (.getHeight canvas)))
+
 (defn draw-preview [canvas cur-style]
   (doto (.getGraphicsContext2D canvas)
+    (clear-gc canvas)
     (change-font-size (:stroke-height-ratio @cur-style))
     (.setFill Color/BLUE)
     (.fillText "test" 50 50)))

@@ -26,3 +26,11 @@
   (.addListener property (reify javafx.beans.value.ChangeListener
                            (changed [this obs old new]
                              (swap! model (fn [m] (assoc-in m keylist new)))))))
+
+; canvas helpers
+
+(defn change-font-size [gc size]
+    (.setFont gc (Font/font (.getFamily (.getFont gc)) size)))
+
+(defn clear-gc [gc canvas]
+  (.clearRect gc 0 0 (.getWidth canvas) (.getHeight canvas)))
