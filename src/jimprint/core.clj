@@ -19,8 +19,7 @@
 (defn init-toolbar [froot]
     (def pick-files (.lookup froot "#pickfilesfolders"))
     (println pick-files)
-    (.setOnMouseClicked pick-files
-                        (handle-action #(show-settings)))
+    (.setOnMouseClicked pick-files (handle-action show-settings))
   )
 
 (defn init-main-window [froot]
@@ -30,7 +29,6 @@
             (println "Hello, World!"))))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
   (show-window "jimprint.fxml" init-main-window))
  
