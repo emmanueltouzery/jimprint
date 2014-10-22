@@ -93,7 +93,7 @@
                                     <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <children>
                                           <Canvas height="30.0" width="100.0" />
-                                          <Button mnemonicParsing="false" text="Button" />
+                                          <Button id="styleedit" mnemonicParsing="false" text="Button" />
                                        </children>
                                     </HBox>
                                  </children>

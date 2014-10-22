@@ -1,6 +1,7 @@
 (ns jimprint.settings
   (:require [clojurefx.core :refer :all])
   (:require [jimprint.javafx-helpers :refer :all])
+  (:require [jimprint.styleedit :refer :all])
   (import javafx.scene.paint.Color))
 
 (defrecord TextStyle [style-id text-stroke text-fill stroke-height-ratio])
@@ -19,8 +20,8 @@
   (refresh-canvas)
   (add-watch cur-style nil refresh-canvas)
   (bind-property cur-style [:stroke-height-ratio] (.valueProperty (.lookup froot "#sizeslider")))
-  (doto (.lookup froot "#okbutton")
-    (.setOnMouseClicked (handle-action #(println @cur-style)))))
+  (on-click froot "#styleedit" #(show-window "styleedit.fxml" init-styleedit))
+  (on-click froot "#okbutton" #(println @cur-style)))
 
 (defn show-settings []
   (show-window "settings.fxml" init-settings))

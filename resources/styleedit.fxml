@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <VBox layoutX="112.0" layoutY="41.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Canvas id="previewcanvas" height="100.0" width="200.0" />
+                  <GridPane VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Font:" GridPane.rowIndex="5" />
+                        <Label text="Background color:" GridPane.rowIndex="3" />
+                        <Label text="Border color:" GridPane.rowIndex="1" />
+                        <Label text="Border thickness:" GridPane.rowIndex="2" />
+                        <ColorPicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ColorPicker GridPane.columnIndex="1" />
+                        <Slider GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ColorPicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Slider GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Background border radius:" GridPane.rowIndex="4" />
+                        <Label text="Text color:" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Button mnemonicParsing="false" text="OK" />
+                        <Button mnemonicParsing="false" text="Cancel" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

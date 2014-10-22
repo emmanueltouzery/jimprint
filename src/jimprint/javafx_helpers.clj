@@ -11,6 +11,10 @@
   (reify javafx.event.EventHandler
     (handle [this e] (handler))))
 
+(defn on-click [froot sel handler]
+  (doto (.lookup froot sel)
+    (.setOnMouseClicked (handle-action handler))))
+
 (defn show-window [fxml-path callback]
   (def froot (run-now (javafx.fxml.FXMLLoader/load (clojure.java.io/resource fxml-path))))
   (def stage (run-now 
