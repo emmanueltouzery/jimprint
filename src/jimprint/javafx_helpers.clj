@@ -1,5 +1,6 @@
 (ns jimprint.javafx-helpers
-  (:require [clojurefx.core :refer :all]))
+  (:require [clojurefx.core :refer :all])
+  (import javafx.scene.text.Font))
 
 (defn handle-event [handler]
   (reify javafx.event.EventHandler

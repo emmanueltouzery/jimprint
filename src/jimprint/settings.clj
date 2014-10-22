@@ -1,16 +1,9 @@
 (ns jimprint.settings
   (:require [clojurefx.core :refer :all])
   (:require [jimprint.javafx-helpers :refer :all])
-  (import javafx.scene.paint.Color)
-  (import javafx.scene.text.Font))
+  (import javafx.scene.paint.Color))
 
 (defrecord TextStyle [style-id text-stroke text-fill stroke-height-ratio])
-
-(defn change-font-size [gc size]
-    (.setFont gc (Font/font (.getFamily (.getFont gc)) size)))
-
-(defn clear-gc [gc canvas]
-  (.clearRect gc 0 0 (.getWidth canvas) (.getHeight canvas)))
 
 (defn draw-preview [canvas cur-style]
   (doto (.getGraphicsContext2D canvas)
