@@ -21,12 +21,12 @@
   (.dispose graphics)
   (println "OK"))
 
-(defn files-picked [files]
+(defn- files-picked [files]
   ; calculate the output folder then...
   ;(println files)
   (apply convert-file files))
 
-(defn init-drop-target [froot]
+(defn- init-drop-target [froot]
     (def droptarget (.lookup froot "#droptarget"))
     (.setOnDragOver droptarget
       (handle-event #(when (.hasFiles (.getDragboard %))
@@ -34,13 +34,13 @@
     (.setOnDragDropped droptarget
                        (handle-event #(files-picked (.getFiles (.getDragboard %))))))
 
-(defn init-toolbar [froot]
+(defn- init-toolbar [froot]
     (def pick-files (.lookup froot "#pickfilesfolders"))
     (println pick-files)
     (.setOnMouseClicked pick-files (handle-action show-settings))
   )
 
-(defn init-main-window [froot]
+(defn- init-main-window [froot]
   (println froot)
   (run-now ((init-drop-target froot)
             (init-toolbar froot)
