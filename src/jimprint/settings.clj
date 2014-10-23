@@ -6,17 +6,17 @@
 
 (defrecord TextStyle [style-id text-stroke text-fill stroke-height-ratio])
 
-(defn- draw-preview [canvas cur-style]
+(defn draw-preview [canvas cur-style clear]
   (doto (.getGraphicsContext2D canvas)
-    (clear-gc canvas)
-    (change-font-size (:stroke-height-ratio @cur-style))
+    (#(when clear (clear-gc % canvas)))
+    (change-font-size (:stroke-height-ratio cur-style))
     (.setFill Color/BLUE)
     (.fillText "test" 50 50)))
 
 (defn- init-settings [froot]
   (def cur-style (atom (->TextStyle 1 (Color/rgb 255 0 0) (Color/rgb 0 255 0) 30)))
   (def refresh-canvas
-    (fn [& _] (draw-preview (.lookup froot "#previewcanvas") cur-style)))
+    (fn [& _] (draw-preview (.lookup froot "#previewcanvas") @cur-style true)))
   (refresh-canvas)
   (add-watch cur-style nil refresh-canvas)
   (bind-property cur-style [:stroke-height-ratio] (.valueProperty (.lookup froot "#sizeslider")))

@@ -1,6 +1,10 @@
 (ns jimprint.javafx-helpers
   (:require [clojurefx.core :refer :all])
-  (import javafx.scene.text.Font))
+  (import javafx.scene.text.Font)
+  (import javafx.embed.swing.SwingFXUtils)
+  (import java.awt.image.BufferedImage)
+  (import java.io.File)
+  (import javax.imageio.ImageIO))
 
 (defn handle-event [handler]
   (reify javafx.event.EventHandler
@@ -39,3 +43,13 @@
 
 (defn clear-gc [gc canvas]
   (.clearRect gc 0 0 (.getWidth canvas) (.getHeight canvas)))
+
+ ; sadly need this... http://stackoverflow.com/a/19605733/516188
+(defn save-image-to-jpeg [img filename]
+  (def bufimg (SwingFXUtils/fromFXImage img nil))
+  (def img-rgb (BufferedImage. (.getWidth img) (.getHeight img) BufferedImage/OPAQUE))
+  (def graphics (.createGraphics img-rgb))
+  (.drawImage graphics bufimg 0 0 nil)
+  (def outputFile (File. filename))
+  (ImageIO/write img-rgb "jpeg" outputFile)
+  (.dispose graphics))

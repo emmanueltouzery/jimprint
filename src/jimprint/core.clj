@@ -2,23 +2,20 @@
   (:require [clojurefx.core :refer :all])
   (:require [jimprint.javafx-helpers :refer :all])
   (:require [jimprint.settings :refer :all])
+  (:import [jimprint.settings TextStyle])
   (import javafx.scene.image.Image)
-  (import javafx.embed.swing.SwingFXUtils)
-  (import java.awt.image.BufferedImage)
-  (import java.io.File)
-  (import javax.imageio.ImageIO)
+  (import javafx.scene.canvas.Canvas)
+  (import javafx.scene.paint.Color)
   (:gen-class))
 
 (defn convert-file [file]
-  (def img (Image. (.toString (.toURI file))))
-  ; sadly need this... http://stackoverflow.com/a/19605733/516188
-  (def bufimg (SwingFXUtils/fromFXImage img nil))
-  (def img-rgb (BufferedImage. (.getWidth img) (.getHeight img) BufferedImage/OPAQUE))
-  (def graphics (.createGraphics img-rgb))
-  (.drawImage graphics bufimg 0 0 nil)
-  (def outputFile (File. "/home/emmanuel/out.jpg"))
-  (ImageIO/write img-rgb "jpeg" outputFile)
-  (.dispose graphics)
+  (def base-image (Image. (.toString (.toURI file))))
+  (def canvas (Canvas. (.getWidth base-image) (.getHeight base-image)))
+  (.drawImage (.getGraphicsContext2D canvas) base-image 0 0)
+  (def text-style (->TextStyle 1 (Color/rgb 255 0 0) (Color/rgb 0 255 0) 30))
+  (draw-preview canvas text-style false)
+  (def img (.snapshot canvas nil nil))
+  (save-image-to-jpeg img "/home/emmanuel/out.jpg")
   (println "OK"))
 
 (defn- files-picked [files]
